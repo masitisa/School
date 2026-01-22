@@ -1,0 +1,1856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Institute of Crafts and Technology | Sekamaneng, Lesotho</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --secondary: #f59e0b;
+            --accent: #10b981;
+            --dark: #1f2937;
+            --light: #f9fafb;
+            --gray: #f3f4f6;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --success: #10b981;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--gray);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header with Hide on Scroll */
+        .main-header {
+            background: linear-gradient(rgba(30, 58, 138, 0.95), rgba(30, 58, 138, 0.98));
+            padding: 1.2rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .main-header.hidden {
+            transform: translateY(-100%);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            height: 55px;
+            width: 55px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 1.5rem;
+            border: 3px solid var(--secondary);
+        }
+
+        .logo-text h1 {
+            color: white;
+            font-size: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .logo-text .tagline {
+            color: var(--secondary);
+            font-size: 0.8rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            padding: 8rem 2rem 5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=2000') center/cover;
+            opacity: 0.15;
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            animation: fadeUp 1s ease-out;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .location-badge {
+            background: var(--secondary);
+            color: var(--dark);
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(245, 158, 11, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--secondary);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            color: var(--primary);
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            background: var(--secondary);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            color: #6b7280;
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .course-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            background: var(--gray);
+            padding: 1.5rem;
+            border-radius: 15px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .tab-btn {
+            padding: 0.8rem 1.8rem;
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 50px;
+            font-weight: 600;
+            color: var(--dark);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(30, 58, 138, 0.2);
+        }
+
+        .tab-btn:hover:not(.active) {
+            background: #e5e7eb;
+            transform: translateY(-2px);
+        }
+
+        /* Course Gallery Content */
+        .course-gallery {
+            display: none;
+            animation: fadeIn 0.8s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .course-gallery.active {
+            display: block;
+        }
+
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid var(--gray);
+        }
+
+        .gallery-header h3 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .gallery-subtitle {
+            color: #6b7280;
+            font-size: 1.1rem;
+        }
+
+        .course-details-box {
+            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            border-left: 5px solid var(--primary);
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .detail-item h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .price-tag {
+            background: linear-gradient(135deg, var(--success), #34d399);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: bold;
+            display: inline-block;
+            margin: 1rem 0;
+            box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2);
+        }
+
+        /* Gallery Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 250px;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 1.5rem 1rem 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        /* Testimonials */
+        .testimonials-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .testimonial {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            border-top: 4px solid var(--secondary);
+        }
+
+        .testimonial:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        }
+
+        .student-photo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            border: 3px solid var(--secondary);
+            overflow: hidden;
+        }
+
+        .student-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: #4b5563;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .student-name {
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .course-duration {
+            color: #6b7280;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        /* Instructor Section */
+        .instructor-card {
+            background: linear-gradient(135deg, var(--primary), #3730a3);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            box-shadow: 0 10px 20px rgba(30, 58, 138, 0.2);
+        }
+
+        .instructor-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid var(--secondary);
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .instructor-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .instructor-info h4 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .instructor-title {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .instructor-quote {
+            font-style: italic;
+            opacity: 0.9;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* Apply Section */
+        .apply-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 6rem 2rem;
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transform: translateY(20px);
+            opacity: 0;
+            animation: slideUp 0.8s ease forwards;
+        }
+
+        @keyframes slideUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .form-title {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            color: var(--primary);
+            font-size: 2.2rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
+        }
+
+        .required::after {
+            content: " *";
+            color: var(--danger);
+        }
+
+        .payment-options {
+            background: #f0f9ff;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-left: 4px solid var(--primary);
+        }
+
+        .payment-options h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .payment-option {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            width: 100%;
+            padding: 1.2rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            text-align: left;
+        }
+
+        .footer-section h4 {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .contact-info {
+            list-style: none;
+        }
+
+        .contact-info li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            color: #9ca3af;
+            font-size: 0.9rem;
+        }
+
+        /* Scroll to Top Button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-to-top:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 { font-size: 2.5rem; }
+            .section-title h2 { font-size: 2.2rem; }
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+            .instructor-card { flex-direction: column; text-align: center; }
+            .form-container { padding: 2rem; }
+        }
+
+        @media (max-width: 768px) {
+            .hero { padding: 7rem 1.5rem 4rem; }
+            .hero h1 { font-size: 2.2rem; }
+            .section-title h2 { font-size: 1.8rem; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .form-grid { grid-template-columns: 1fr; }
+            .footer-content { text-align: center; }
+            .stats-container { gap: 2rem; }
+            .stat-number { font-size: 2rem; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 1.8rem; }
+            .hero p { font-size: 1.1rem; }
+            .tab-btn { padding: 0.6rem 1.2rem; font-size: 0.9rem; }
+            .course-tabs { padding: 1rem; }
+            .form-container { padding: 1.5rem; }
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--primary);
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        .mobile-menu .close-btn {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        .mobile-menu-links {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .mobile-menu-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .mobile-menu-links a:hover {
+            color: var(--secondary);
+        }
+
+        /* Loading animation for images */
+        .gallery-item {
+            position: relative;
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            background: var(--success);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 2000;
+            transform: translateX(150%);
+            transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification.error {
+            background: var(--danger);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Hide on Scroll -->
+    <header class="main-header">
+        <div class="logo-container">
+            <div class="logo">GICT</div>
+            <div class="logo-text">
+                <h1>Global Institute</h1>
+                <div class="tagline">Crafts & Technology</div>
+            </div>
+        </div>
+        
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#gallery">Courses</a>
+            <a href="#apply">Apply Now</a>
+            <a href="#contact">Contact</a>
+            <div class="intake-badges">
+                <span style="background: var(--secondary); color: var(--dark); padding: 0.5rem 1rem; border-radius: 4px; font-weight: bold;">
+                    February Intake Open
+                </span>
+            </div>
+        </div>
+        
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+        </button>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="close-btn" id="closeMenuBtn">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="mobile-menu-links">
+            <a href="#home" onclick="closeMobileMenu()">Home</a>
+            <a href="#gallery" onclick="closeMobileMenu()">Courses</a>
+            <a href="#apply" onclick="closeMobileMenu()">Apply Now</a>
+            <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="location-badge">
+                <i class="fas fa-map-marker-alt"></i> Sekamaneng, Lesotho
+            </div>
+            <h1>Transform Your Future With Hands-On Skills</h1>
+            <p>Professional training with 100% practical focus. Join hundreds of successful graduates who are building careers and businesses across Lesotho.</p>
+            
+            <div style="margin-top: 3rem;">
+                <a href="#apply" class="submit-btn" style="width: auto; padding: 1rem 2.5rem; display: inline-flex;">
+                    <i class="fas fa-graduation-cap"></i> Start Your Journey
+                </a>
+                <a href="#gallery" style="margin-left: 1rem; color: white; text-decoration: underline;">View Courses →</a>
+            </div>
+            
+            <div class="stats-container">
+                <div class="stat-item">
+                    <span class="stat-number" id="studentsCount">0</span>
+                    <span class="stat-label">Students Trained</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="graduationRate">0</span>
+                    <span class="stat-label">Graduation Rate</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="employmentRate">0</span>
+                    <span class="stat-label">Employment Rate</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">6</span>
+                    <span class="stat-label">Practical Courses</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery-section">
+        <div class="section-title animate-on-scroll">
+            <h2>Our Professional Courses</h2>
+            <p class="section-subtitle">Each course includes comprehensive training, portfolio development, and business skills</p>
+        </div>
+
+        <!-- Course Tabs -->
+        <div class="course-tabs" id="courseTabs">
+            <!-- Tabs will be generated by JavaScript -->
+        </div>
+
+        <!-- Course Galleries will be generated by JavaScript -->
+        <div id="courseGalleries"></div>
+    </section>
+
+    <!-- Apply Section -->
+    <section id="apply" class="apply-section">
+        <div class="section-title">
+            <h2>Apply for Admission</h2>
+            <p class="section-subtitle">Fill in your details below to start your application process</p>
+        </div>
+        
+        <div class="form-container">
+            <h3 class="form-title">Admission Application Form</h3>
+            
+            <form id="applicationForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="required">Full Name</label>
+                        <input type="text" id="fullName" placeholder="Enter your full name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="required">Date of Birth</label>
+                        <input type="date" id="dob" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="required">Gender</label>
+                        <select id="gender" required>
+                            <option value="">Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="required">Phone Number</label>
+                        <input type="tel" id="phone" placeholder="+266 5XX XXX XX" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="required">Email Address</label>
+                        <input type="email" id="email" placeholder="your.email@example.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="required">ID/Passport Number</label>
+                        <input type="text" id="idNumber" placeholder="Enter ID/Passport number" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Physical Address</label>
+                        <input type="text" id="address" placeholder="Street, Village/Town">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Next of Kin Name</label>
+                        <input type="text" id="kinName" placeholder="Next of kin full name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Next of Kin Contact</label>
+                        <input type="tel" id="kinContact" placeholder="Next of kin phone number">
+                    </div>
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="required">Select Course</label>
+                        <select id="courseSelect" required onchange="updateCourseDetails()">
+                            <option value="">-- Choose a Course --</option>
+                            <!-- Options will be populated by JavaScript -->
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="required">Preferred Duration</label>
+                        <select id="duration" required>
+                            <option value="">Select Duration</option>
+                            <option value="6 Months">6 Months</option>
+                            <option value="9 Months">9 Months</option>
+                            <option value="12 Months">12 Months</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="required">Intake Period</label>
+                        <select id="intake" required>
+                            <option value="">Select Intake</option>
+                            <option value="February 2024">February 2024</option>
+                            <option value="August 2024">August 2024</option>
+                            <option value="February 2025">February 2025</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Highest Education Level</label>
+                        <select id="education">
+                            <option value="">Select Education Level</option>
+                            <option value="Primary">Primary School</option>
+                            <option value="Junior Certificate">Junior Certificate</option>
+                            <option value="LGCSE">LGCSE</option>
+                            <option value="High School">High School</option>
+                            <option value="Diploma">Diploma</option>
+                            <option value="Degree">Degree</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Previous Experience (if any)</label>
+                    <textarea id="experience" rows="3" placeholder="Describe any previous experience related to your chosen course"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Why do you want to join this course? (Optional)</label>
+                    <textarea id="motivation" rows="3" placeholder="Tell us about your motivation and goals"></textarea>
+                </div>
+                
+                <div class="payment-options">
+                    <h4>Payment Options</h4>
+                    <div class="payment-option">
+                        <input type="radio" id="monthly" name="payment" value="monthly" checked>
+                        <label for="monthly">Monthly Payment (M1,000 per month)</label>
+                    </div>
+                    <div class="payment-option">
+                        <input type="radio" id="quarterly" name="payment" value="quarterly">
+                        <label for="quarterly">Quarterly Payment (M3,000 per quarter)</label>
+                    </div>
+                    <div class="payment-option">
+                        <input type="radio" id="full" name="payment" value="full">
+                        <label for="full">Full Course Payment (Discounted rate)</label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>How did you hear about us?</label>
+                    <select id="referral">
+                        <option value="">Select Option</option>
+                        <option value="Friend/Family">Friend/Family</option>
+                        <option value="Social Media">Social Media</option>
+                        <option value="Poster/Flyer">Poster/Flyer</option>
+                        <option value="Radio">Radio</option>
+                        <option value="Website">Website</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                
+                <button type="button" class="submit-btn" onclick="submitApplication()">
+                    <i class="fab fa-whatsapp"></i> Submit via WhatsApp
+                </button>
+                
+                <p style="text-align: center; margin-top: 1rem; color: #6b7280; font-size: 0.9rem;">
+                    Your information will be sent directly to our admissions office via WhatsApp
+                </p>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Global Institute of Crafts and Technology</h4>
+                <p>Empowering Basotho through practical skills training since 2015. Fighting poverty one skill at a time with professional, hands-on education.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Contact Information</h4>
+                <ul class="contact-info">
+                    <li><i class="fas fa-map-marker-alt"></i> Sekamaneng, Maseru District, Lesotho</li>
+                    <li><i class="fas fa-phone"></i> +266 5996 3292</li>
+                    <li><i class="fas fa-phone"></i> +266 5896 3292 (Admissions)</li>
+                    <li><i class="fas fa-envelope"></i> admissions@gict.co.ls</li>
+                    <li><i class="fas fa-envelope"></i> info@gict.co.ls</li>
+                    <li><i class="fas fa-clock"></i> Mon-Fri: 8:00 AM - 5:00 PM</li>
+                    <li><i class="fas fa-clock"></i> Sat: 9:00 AM - 1:00 PM</li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul class="contact-info">
+                    <li><a href="#home" style="color: white; text-decoration: none;">Home</a></li>
+                    <li><a href="#gallery" style="color: white; text-decoration: none;">Courses & Gallery</a></li>
+                    <li><a href="#apply" style="color: white; text-decoration: none;">Apply Now</a></li>
+                    <li><a href="#" style="color: white; text-decoration: none;">Payment Methods</a></li>
+                    <li><a href="#" style="color: white; text-decoration: none;">Student Portal</a></li>
+                    <li><a href="#" style="color: white; text-decoration: none;">Download Brochure</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            &copy; 2024 Global Institute of Crafts and Technology. All rights reserved. | 
+            Empowering Basotho through Skills since 2015
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-to-top" id="scrollToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i>
+        <span id="notificationText">Application sent successfully!</span>
+    </div>
+
+    <script>
+        // Courses Data Object
+        const courses = {
+            fashion: {
+                id: "fashion",
+                name: "Fashion Design",
+                subtitle: "Professional garment making & textile design",
+                price: "M3,000 per quarter | M1,000 monthly",
+                durationOptions: ["6 Months", "9 Months", "12 Months"],
+                description: "Master the art of fashion design from pattern making to professional garment construction. Learn to create your own clothing line.",
+                details: {
+                    "Course Modules": [
+                        "Pattern Making & Cutting",
+                        "Garment Construction",
+                        "Textile Science & Fabric Selection",
+                        "Fashion Illustration",
+                        "Industrial Machine Operation",
+                        "Fashion Business & Marketing"
+                    ],
+                    "Career Paths": [
+                        "Fashion Designer",
+                        "Tailor",
+                        "Pattern Maker",
+                        "Fashion Entrepreneur",
+                        "Costume Designer"
+                    ],
+                    "Tools Provided": [
+                        "Industrial Sewing Machines",
+                        "Dress Forms",
+                        "Pattern Making Tools",
+                        "Textile Samples Library"
+                    ]
+                },
+                images: [
+                    {url: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=600", caption: "Graduation Collection 2023 - Student: Masechaba M."},
+                    {url: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=600", caption: "Pattern Making Workshop - Advanced Techniques"},
+                    {url: "https://images.unsplash.com/photo-1586363104862-3a5e2ab60d99?auto=format&fit=crop&w=600", caption: "Textile Design - Traditional Basotho Patterns"},
+                    {url: "https://images.unsplash.com/photo-1558769132-cb1c458e4222?auto=format&fit=crop&w=600", caption: "Fashion Show 2023 - Student Designs"}
+                ],
+                testimonials: [
+                    {
+                        name: "Lerato K.",
+                        text: "I started my own tailoring business after completing the 6-month course. Now I employ 2 other people and have contracts with local schools!",
+                        duration: "Graduated: August 2023",
+                        image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?auto=format&fit=crop&w=200"
+                    },
+                    {
+                        name: "Thabo M.",
+                        text: "The practical approach helped me start my fashion line immediately after graduation. I now supply to 3 local boutiques.",
+                        duration: "Graduated: February 2023",
+                        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200"
+                    }
+                ],
+                instructor: {
+                    name: "Rodman Thabo",
+                    title: "Lead Fashion Design Instructor",
+                    quote: "Our students learn industry-standard techniques from day one. By month 3, they're creating professional garments. We focus on both creativity and business skills.",
+                    image: "https://images.unsplash.com/photo-1551836026-d5c2a47b6c8b?auto=format&fit=crop&w=200"
+                }
+            },
+            carpentry: {
+                id: "carpentry",
+                name: "Carpentry & Woodwork",
+                subtitle: "Professional furniture making & construction",
+                price: "M3,000 per quarter",
+                durationOptions: ["12 Months"],
+                description: "Master woodworking skills from basic joinery to advanced furniture making and construction techniques.",
+                details: {
+                    "Course Modules": [
+                        "Technical Drawings & Blueprints",
+                        "Woodworking Tools & Safety",
+                        "Furniture Design & Construction",
+                        "Cabinet Making",
+                        "Finishing Techniques",
+                        "Roofing & Structural Woodwork"
+                    ],
+                    "Career Paths": [
+                        "Furniture Maker",
+                        "Carpenter",
+                        "Cabinet Maker",
+                        "Construction Supervisor",
+                        "Woodworking Entrepreneur"
+                    ],
+                    "Tools Provided": [
+                        "Power Tools Set",
+                        "Woodworking Machines",
+                        "Safety Equipment",
+                        "Measuring & Layout Tools"
+                    ]
+                },
+                images: [
+                    {url: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=600", caption: "Furniture Making Workshop - Student Project"},
+                    {url: "https://images.unsplash.com/photo-1605106715994-18d3fecffb98?auto=format&fit=crop&w=600", caption: "Cabinet Making - Professional Techniques"},
+                    {url: "https://images.unsplash.com/photo-1565373677401-f0df81e6c9c2?auto=format&fit=crop&w=600", caption: "Woodworking Tools Training"}
+                ],
+                testimonials: [
+                    {
+                        name: "Teboho S.",
+                        text: "I now run my own furniture workshop. The skills I learned are helping me build quality furniture for homes and offices.",
+                        duration: "Graduated: June 2023",
+                        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200"
+                    }
+                ],
+                instructor: {
+                    name: "Michael Letsie",
+                    title: "Senior Carpentry Instructor",
+                    quote: "We teach both traditional and modern woodworking techniques. Our graduates can work in construction or start their own furniture businesses.",
+                    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200"
+                }
+            },
+            catering: {
+                id: "catering",
+                name: "Catering & Hospitality",
+                subtitle: "Professional cooking, baking & event management",
+                price: "M3,000 per quarter",
+                durationOptions: ["6 Months", "12 Months"],
+                description: "Learn professional cooking, baking, and event management skills for the hospitality industry.",
+                details: {
+                    "Specializations": [
+                        "Baking: Pastries, Cakes & Bread",
+                        "Cooking: Local & International Cuisine",
+                        "Table Setting & Event Decor",
+                        "Food Safety & Professional Hygiene"
+                    ],
+                    "Career Paths": [
+                        "Professional Chef",
+                        "Baker",
+                        "Catering Business Owner",
+                        "Event Planner",
+                        "Restaurant Manager"
+                    ],
+                    "Facilities": [
+                        "Commercial Kitchen",
+                        "Baking Laboratory",
+                        "Dining & Event Space",
+                        "Food Safety Lab"
+                    ]
+                },
+                images: [
+                    {url: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=600", caption: "Baking Class - Artisan Bread Making"},
+                    {url: "https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=600", caption: "Professional Cooking Techniques"},
+                    {url: "https://images.unsplash.com/photo-1578474846511-04ba529f0b88?auto=format&fit=crop&w=600", caption: "Event Catering Training"}
+                ],
+                testimonials: [
+                    {
+                        name: "Matseliso P.",
+                        text: "I started a small bakery from home after the 6-month course. Now I supply bread to local shops and cater for events.",
+                        duration: "Graduated: December 2023",
+                        image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200"
+                    }
+                ],
+                instructor: {
+                    name: "Anna Molefi",
+                    title: "Head Catering Instructor",
+                    quote: "We focus on both cooking skills and business management. Our students learn to create menus, cost dishes, and run successful food businesses.",
+                    image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200"
+                }
+            },
+            plumbing: {
+                id: "plumbing",
+                name: "Plumbing",
+                subtitle: "Professional pipe fitting & installation",
+                price: "M3,000 per quarter",
+                durationOptions: ["6 Months", "9 Months", "12 Months"],
+                description: "Master residential and commercial plumbing systems, from basic repairs to complex installations.",
+                details: {
+                    "Course Modules": [
+                        "Pipe Fitting & Installation",
+                        "Drainage & Sewage Systems",
+                        "Geyser Installation & Repair",
+                        "Blueprint Reading",
+                        "Maintenance & Troubleshooting",
+                        "Water Conservation Systems"
+                    ],
+                    "Career Paths": [
+                        "Professional Plumber",
+                        "Pipe Fitter",
+                        "Maintenance Technician",
+                        "Plumbing Contractor",
+                        "Municipal Water Technician"
+                    ],
+                    "Tools Provided": [
+                        "Professional Tool Kit",
+                        "Pipe Threading Machine",
+                        "Pressure Testing Equipment",
+                        "Safety Gear"
+                    ]
+                },
+                images: [
+                    {url: "https://images.unsplash.com/photo-1621967299229-c6e7085a7b1c?auto=format&fit=crop&w=600", caption: "Pipe Installation Workshop"},
+                    {url: "https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?auto=format&fit=crop&w=600", caption: "Geyser Installation Training"},
+                    {url: "https://images.unsplash.com/photo-1600881332846-c6eef8c4e90d?auto=format&fit=crop&w=600", caption: "Drainage System Installation"}
+                ],
+                testimonials: [
+                    {
+                        name: "Kabelo N.",
+                        text: "After completing the plumbing course, I joined a construction company. I'm now their lead plumber for housing projects.",
+                        duration: "Graduated: March 2023",
+                        image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=200"
+                    }
+                ],
+                instructor: {
+                    name: "David Mokoena",
+                    title: "Plumbing Department Head",
+                    quote: "We train plumbers who understand both traditional and modern plumbing systems. Safety and quality workmanship are our priorities.",
+                    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=200"
+                }
+            },
+            brick: {
+                id: "brick",
+                name: "Brick Laying & Construction",
+                subtitle: "Professional masonry & construction skills",
+                price: "M3,000 per quarter",
+                durationOptions: ["6 Months", "12 Months"],
+                description: "Learn professional bricklaying, plastering, and construction techniques for residential and commercial projects.",
+                details: {
+                    "Course Modules": [
+                        "Foundation Laying & Trenching",
+                        "Wall Construction & Bonding",
+                        "Mortar Mixing Ratios",
+                        "Plastering & Finishing",
+                        "Site Safety & Measurements",
+                        "Blueprint Reading"
+                    ],
+                    "Career Paths": [
+                        "Professional Bricklayer",
+                        "Construction Mason",
+                        "Plasterer",
+                        "Construction Supervisor",
+                        "Building Contractor"
+                    ],
+                    "Tools Provided": [
+                        "Masonry Tool Set",
+                        "Leveling Instruments",
+                        "Mixing Equipment",
+                        "Safety Gear"
+                    ]
+                },
+                images: [
+                    {url: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=600", caption: "Wall Construction Training"},
+                    {url: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=600", caption: "Plastering Techniques"},
+                    {url: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=600", caption: "Construction Site Safety"}
+                ],
+                testimonials: [
+                    {
+                        name: "Mpho T.",
+                        text: "I started working on construction sites while still studying. Now I have my own small team and we get regular contracts.",
+                        duration: "Graduated: October 2023",
+                        image: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=200"
+                    }
+                ],
+                instructor: {
+                    name: "Samuel Mohapi",
+                    title: "Brick Laying Instructor",
+                    quote: "We emphasize precision and quality in every aspect of masonry. Our graduates are ready for both employment and entrepreneurship.",
+                    image: "https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?auto=format&fit=crop&w=200"
+                }
+            },
+            cosmetology: {
+                id: "cosmetology",
+                name: "Cosmetology & Beauty",
+                subtitle: "Professional beauty & salon services",
+                price: "M3,000 per quarter",
+                durationOptions: ["6 Months"],
+                description: "Master beauty techniques including hairdressing, nail art, makeup, and salon management.",
+                details: {
+                    "Specializations": [
+                        "Nails: Acrylic, Gel & Nail Art",
+                        "Hair Dressing: Styling, Braiding & Treatment",
+                        "Makeup: Bridal, Daily & Special Effects",
+                        "Salon Management & Customer Care"
+                    ],
+                    "Career Paths": [
+                        "Professional Hair Stylist",
+                        "Nail Technician",
+                        "Makeup Artist",
+                        "Salon Owner",
+                        "Beauty Consultant"
+                    ],
+                    "Facilities": [
+                        "Professional Salon Setup",
+                        "Manicure/Pedicure Station",
+                        "Makeup Studio",
+                        "Hair Treatment Area"
+                    ]
+                },
+                images: [
+                    {url: "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=600", caption: "Hair Styling Workshop"},
+                    {url: "https://images.unsplash.com/photo-1519415711931-702deacf5be8?auto=format&fit=crop&w=600", caption: "Nail Art Training"},
+                    {url: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=600", caption: "Professional Makeup Techniques"}
+                ],
+                testimonials: [
+                    {
+                        name: "Lineo M.",
+                        text: "I opened my own beauty salon right after graduation. The business skills we learned were as important as the beauty techniques.",
+                        duration: "Graduated: May 2023",
+                        image: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=200"
+                    }
+                ],
+                instructor: {
+                    name: "Sarah Mokhele",
+                    title: "Cosmetology Department Head",
+                    quote: "We combine technical beauty skills with business training. Our graduates are prepared to excel in salons or start their own businesses.",
+                    image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200"
+                }
+            }
+        };
+
+        // Initialize the website
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeStats();
+            generateCourseTabs();
+            generateCourseGalleries();
+            populateCourseSelect();
+            setupScrollEffects();
+            setupMobileMenu();
+            
+            // Set default course to Fashion Design
+            showCourseGallery('fashion');
+        });
+
+        // Initialize animated statistics
+        function initializeStats() {
+            animateValue('studentsCount', 0, 850, 2000);
+            animateValue('graduationRate', 0, 92, 2000);
+            animateValue('employmentRate', 0, 78, 2000);
+        }
+
+        function animateValue(id, start, end, duration) {
+            const obj = document.getElementById(id);
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const value = Math.floor(progress * (end - start) + start);
+                obj.innerHTML = id === 'graduationRate' || id === 'employmentRate' ? `${value}%` : value;
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        // Generate course tabs
+        function generateCourseTabs() {
+            const tabsContainer = document.getElementById('courseTabs');
+            const fragment = document.createDocumentFragment();
+            
+            Object.values(courses).forEach((course, index) => {
+                const tabBtn = document.createElement('button');
+                tabBtn.className = `tab-btn ${index === 0 ? 'active' : ''}`;
+                tabBtn.dataset.course = course.id;
+                
+                // Add icon based on course
+                let icon = 'fa-graduation-cap';
+                if (course.id === 'fashion') icon = 'fa-tshirt';
+                else if (course.id === 'carpentry') icon = 'fa-hammer';
+                else if (course.id === 'catering') icon = 'fa-utensils';
+                else if (course.id === 'plumbing') icon = 'fa-faucet';
+                else if (course.id === 'brick') icon = 'fa-house';
+                else if (course.id === 'cosmetology') icon = 'fa-spa';
+                
+                tabBtn.innerHTML = `<i class="fas ${icon}"></i> ${course.name}`;
+                tabBtn.addEventListener('click', () => showCourseGallery(course.id));
+                fragment.appendChild(tabBtn);
+            });
+            
+            tabsContainer.appendChild(fragment);
+        }
+
+        // Generate course galleries
+        function generateCourseGalleries() {
+            const galleriesContainer = document.getElementById('courseGalleries');
+            const fragment = document.createDocumentFragment();
+            
+            Object.values(courses).forEach((course, index) => {
+                const gallery = document.createElement('div');
+                gallery.id = `${course.id}-gallery`;
+                gallery.className = `course-gallery ${index === 0 ? 'active' : ''}`;
+                
+                // Build gallery HTML
+                gallery.innerHTML = `
+                    <div class="gallery-header">
+                        <h3>${course.name}</h3>
+                        <div class="gallery-subtitle">${course.subtitle}</div>
+                        <div class="price-tag">${course.price}</div>
+                    </div>
+                    
+                    <div class="course-details-box">
+                        <p style="margin-bottom: 1.5rem; font-size: 1.1rem;">${course.description}</p>
+                        <div class="details-grid">
+                            ${Object.entries(course.details).map(([title, items]) => `
+                                <div class="detail-item">
+                                    <h4>${title}</h4>
+                                    <ul style="list-style: none; padding-left: 0;">
+                                        ${items.map(item => `<li style="margin-bottom: 0.3rem; position: relative; padding-left: 1.5rem;">
+                                            <i class="fas fa-check" style="color: var(--success); position: absolute; left: 0;"></i> ${item}
+                                        </li>`).join('')}
+                                    </ul>
+                                </div>
+                            `).join('')}
+                        </div>
+                        <div style="margin-top: 1.5rem;">
+                            <strong>Duration Options:</strong> ${course.durationOptions.join(', ')}
+                        </div>
+                    </div>
+                    
+                    <h4 style="margin: 2.5rem 0 1.5rem; color: var(--primary);">Student Work Gallery</h4>
+                    <div class="gallery-grid" id="${course.id}-images">
+                        ${course.images.map(img => `
+                            <div class="gallery-item">
+                                <img src="${img.url}" alt="${course.name}" loading="lazy">
+                                <div class="gallery-caption">${img.caption}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    
+                    <h4 style="margin: 2.5rem 0 1.5rem; color: var(--primary);">Student Testimonials</h4>
+                    <div class="testimonials-container" id="${course.id}-testimonials">
+                        ${course.testimonials.map(testimonial => `
+                            <div class="testimonial">
+                                <div class="student-photo">
+                                    <img src="${testimonial.image}" alt="${testimonial.name}">
+                                </div>
+                                <div class="testimonial-text">"${testimonial.text}"</div>
+                                <div class="student-name">${testimonial.name}</div>
+                                <div class="course-duration">${testimonial.duration}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    
+                    <div class="instructor-card">
+                        <div class="instructor-photo">
+                            <img src="${course.instructor.image}" alt="${course.instructor.name}">
+                        </div>
+                        <div class="instructor-info">
+                            <h4>${course.instructor.name}</h4>
+                            <div class="instructor-title">${course.instructor.title}</div>
+                            <div class="instructor-quote">"${course.instructor.quote}"</div>
+                        </div>
+                    </div>
+                    
+                    <div class="folder-upload" style="margin-top: 2.5rem;">
+                        <div class="folder-icon">
+                            <i class="fas fa-folder-open"></i>
+                        </div>
+                        <h4>Course Portfolio System</h4>
+                        <p>All student work is organized in the "${course.name}" portfolio folder. New images are automatically added from the course folder.</p>
+                        <button class="upload-btn" onclick="simulateFolderUpload('${course.id}')">
+                            <i class="fas fa-upload"></i> Load More Images from Folder
+                        </button>
+                        <div id="${course.id}-upload-status" style="margin-top: 1rem; color: var(--success); font-weight: 600;"></div>
+                    </div>
+                `;
+                
+                fragment.appendChild(gallery);
+            });
+            
+            galleriesContainer.appendChild(fragment);
+        }
+
+        // Populate course select in application form
+        function populateCourseSelect() {
+            const courseSelect = document.getElementById('courseSelect');
+            Object.values(courses).forEach(course => {
+                const option = document.createElement('option');
+                option.value = course.id;
+                option.textContent = course.name;
+                courseSelect.appendChild(option);
+            });
+        }
+
+        // Show specific course gallery
+        function showCourseGallery(courseId) {
+            // Update tabs
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.course === courseId);
+            });
+            
+            // Update galleries
+            document.querySelectorAll('.course-gallery').forEach(gallery => {
+                gallery.classList.toggle('active', gallery.id === `${courseId}-gallery`);
+            });
+            
+            // Scroll to gallery section
+            document.getElementById('gallery').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Simulate folder upload
+        function simulateFolderUpload(courseId) {
+            const statusElement = document.getElementById(`${courseId}-upload-status`);
+            const imagesContainer = document.getElementById(`${courseId}-images`);
+            const course = courses[courseId];
+            
+            statusElement.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading images from folder...';
+            
+            setTimeout(() => {
+                // Simulate loading new images
+                const newImages = [
+                    {url: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=600", caption: "New Project - Recent Student Work"},
+                    {url: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=600", caption: "Workshop Session - Practical Training"}
+                ];
+                
+                newImages.forEach(img => {
+                    const galleryItem = document.createElement('div');
+                    galleryItem.className = 'gallery-item';
+                    galleryItem.innerHTML = `
+                        <img src="${img.url}" alt="${course.name}" loading="lazy">
+                        <div class="gallery-caption">${img.caption}</div>
+                    `;
+                    imagesContainer.appendChild(galleryItem);
+                });
+                
+                statusElement.innerHTML = `<i class="fas fa-check-circle"></i> ${newImages.length} new images loaded from "${course.name}" folder`;
+                
+                // Reset after 3 seconds
+                setTimeout(() => {
+                    statusElement.innerHTML = '';
+                }, 3000);
+            }, 1500);
+        }
+
+        // Update course details when selected
+        function updateCourseDetails() {
+            const courseSelect = document.getElementById('courseSelect');
+            const selectedCourse = courseSelect.value;
+            
+            if (selectedCourse && courses[selectedCourse]) {
+                // You could update form details based on selected course
+                console.log(`Selected course: ${courses[selectedCourse].name}`);
+            }
+        }
+
+        // Submit application form
+        function submitApplication() {
+            // Get form values
+            const fullName = document.getElementById('fullName').value;
+            const dob = document.getElementById('dob').value;
+            const gender = document.getElementById('gender').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const idNumber = document.getElementById('idNumber').value;
+            const address = document.getElementById('address').value;
+            const courseSelect = document.getElementById('courseSelect').value;
+            const duration = document.getElementById('duration').value;
+            const intake = document.getElementById('intake').value;
+            const education = document.getElementById('education').value;
+            const experience = document.getElementById('experience').value;
+            const motivation = document.getElementById('motivation').value;
+            const referral = document.getElementById('referral').value;
+            
+            // Get payment option
+            const paymentOption = document.querySelector('input[name="payment"]:checked');
+            const payment = paymentOption ? paymentOption.value : 'monthly';
+            
+            // Validate required fields
+            if (!fullName || !dob || !gender || !phone || !email || !idNumber || !courseSelect || !duration || !intake) {
+                showNotification('Please fill in all required fields', 'error');
+                return;
+            }
+            
+            // Get course name
+            const courseName = courses[courseSelect] ? courses[courseSelect].name : courseSelect;
+            
+            // Format date
+            const dobFormatted = dob ? new Date(dob).toLocaleDateString() : 'Not provided';
+            
+            // Create WhatsApp message
+            const message = `*GLOBAL INSTITUTE - ADMISSION APPLICATION*%0A%0A` +
+                          `*PERSONAL INFORMATION*%0A` +
+                          `Full Name: ${fullName}%0A` +
+                          `Date of Birth: ${dobFormatted}%0A` +
+                          `Gender: ${gender}%0A` +
+                          `ID/Passport: ${idNumber}%0A` +
+                          `Phone: ${phone}%0A` +
+                          `Email: ${email}%0A` +
+                          `Address: ${address || 'Not provided'}%0A%0A` +
+                          `*COURSE INFORMATION*%0A` +
+                          `Selected Course: ${courseName}%0A` +
+                          `Duration: ${duration}%0A` +
+                          `Intake Period: ${intake}%0A` +
+                          `Payment Option: ${payment === 'monthly' ? 'Monthly (M1,000/month)' : payment === 'quarterly' ? 'Quarterly (M3,000/quarter)' : 'Full Payment'}%0A%0A` +
+                          `*EDUCATION & BACKGROUND*%0A` +
+                          `Education Level: ${education || 'Not provided'}%0A` +
+                          `Previous Experience: ${experience || 'None'}%0A` +
+                          `Motivation: ${motivation || 'Not provided'}%0A` +
+                          `Referral Source: ${referral || 'Not specified'}%0A%0A` +
+                          `*APPLICATION SUBMITTED*%0A` +
+                          `Date: ${new Date().toLocaleDateString()}%0A` +
+                          `Time: ${new Date().toLocaleTimeString()}%0A%0A` +
+                          `This application was submitted via the Global Institute website.`;
+            
+            // Open WhatsApp
+            const phoneNumber = "26659963292";
+            window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+            
+            // Show success notification
+            showNotification('Application submitted successfully! Check WhatsApp.');
+            
+            // Reset form after delay
+            setTimeout(() => {
+                document.getElementById('applicationForm').reset();
+            }, 3000);
+        }
+
+        // Show notification
+        function showNotification(message, type = 'success') {
+            const notification = document.getElementById('notification');
+            const notificationText = document.getElementById('notificationText');
+            
+            notificationText.textContent = message;
+            notification.className = `notification ${type}`;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 5000);
+        }
+
+        // Setup scroll effects
+        function setupScrollEffects() {
+            const header = document.querySelector('.main-header');
+            const scrollToTopBtn = document.getElementById('scrollToTop');
+            let lastScrollTop = 0;
+            
+            // Header hide/show on scroll
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                // Hide header on scroll down, show on scroll up
+                if (scrollTop > lastScrollTop && scrollTop > 100) {
+                    header.classList.add('hidden');
+                } else {
+                    header.classList.remove('hidden');
+                }
+                
+                lastScrollTop = scrollTop;
+                
+                // Show/hide scroll to top button
+                if (scrollTop > 300) {
+                    scrollToTopBtn.classList.add('visible');
+                } else {
+                    scrollToTopBtn.classList.remove('visible');
+                }
+                
+                // Animate elements on scroll
+                animateOnScroll();
+            });
+            
+            // Scroll to top functionality
+            scrollToTopBtn.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            
+            // Initialize ScrollReveal
+            ScrollReveal().reveal('.animate-on-scroll', {
+                delay: 200,
+                distance: '30px',
+                duration: 1000,
+                easing: 'cubic-bezier(0.5, 0, 0, 1)',
+                interval: 200
+            });
+        }
+
+        // Animate elements on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.animate-on-scroll');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        // Setup mobile menu
+        function setupMobileMenu() {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const closeMenuBtn = document.getElementById('closeMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+            
+            closeMenuBtn.addEventListener('click', closeMobileMenu);
+            
+            // Close menu when clicking on links
+            document.querySelectorAll('.mobile-menu-links a').forEach(link => {
+                link.addEventListener('click', closeMobileMenu);
+            });
+        }
+
+        function closeMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    </script>
+</body>
+</html>
